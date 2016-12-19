@@ -6,7 +6,7 @@ var fs = require("fs");
 var express = require("express");
 var app = express();
 var schema = require("./schema");
-var baseUrl = "localhost:3000/";
+var baseUrl = "https://url-service-yogaboll.herokuapp.com/";
 var port = (process.env.PORT || 3000);
 
 //mongoose.connect("mongodb://localhost:27017/urlservice");
