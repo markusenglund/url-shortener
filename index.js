@@ -7,9 +7,11 @@ var express = require("express");
 var app = express();
 var schema = require("./schema");
 var baseUrl = "localhost:3000/";
-var port = (process.env.PORT || "3000");
+var port = (process.env.PORT || 3000);
 
-mongoose.connect("mongodb://localhost:27017/urlservice");
+//mongoose.connect("mongodb://localhost:27017/urlservice");
+mongoose.connect("mongodb://markus:markus@ds021016.mlab.com:21016/url-shortener");
+
 
 var ShortUrl = mongoose.model("ShortUrl", schema, "shortUrls");
 
