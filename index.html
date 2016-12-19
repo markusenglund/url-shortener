@@ -2,23 +2,28 @@
 <html>
 <head>
     <title>URL shortener service</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-    <h1>URL shortener service</h1>
-    <p><strong>by Markus Englund</strong></p>
-    <ul>
-        <li>Pass a URL as a parameter and receive a shortened URL as response</li>
-        <li>The shortened URL will redirect you to the URL you passed in</li>
-    </ul>
-    
-    <h3>Example</h3>
-    <p>Go to https://url-service-yogaboll.herokuapp.com/new/http://www.aol.com</p>
-    <p>You will receive a response that looks like this:</p>
-    <p>{
-"short_url": "https://url-service-yogaboll.herokuapp.com/r1rNjcrVg",
-"original_url": "http://www.aol.com"
-}</p>
-   <p>The short url will redirect you to the AOL homepage!</p>
+   <div class="container">
+        <h1>URL shortener service</h1>
+        <p><strong>by Markus Englund</strong></p>
+        <ul>
+            <li>Pass a URL as a parameter and receive a shortened URL as response</li>
+            <li>The shortened URL will redirect you to the URL you passed in</li>
+        </ul>
+
+        <h3>Example</h3>
+        <p>Go to <a href="https://url-service-yogaboll.herokuapp.com/new/http://www.aol.com">https://url-service-yogaboll.herokuapp.com/new/http://www.aol.com/</a></p>
+        <p>You will receive a response that looks like this:</p>
+        <pre><code>
+    {
+    "short_url": "https://url-service-yogaboll.herokuapp.com/r1rNjcrVg",
+    "original_url": "http://www.aol.com"
+    }
+        </code></pre>
+        <p>The "short url" (*cough*) will redirect you to the AOL homepage!</p>
+    </div>
     
 </body>       
 </html>

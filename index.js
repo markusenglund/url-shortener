@@ -1,13 +1,13 @@
 //Make a random short URL for every /new/url, make sure shorturl is not replicated.
 
-var mongoose = require("mongoose");
-var shortid = require("shortid");
-var fs = require("fs");
-var express = require("express");
-var app = express();
-var schema = require("./schema");
-var baseUrl = "https://url-service-yogaboll.herokuapp.com/";
-var port = (process.env.PORT || 3000);
+const mongoose = require("mongoose");
+const shortid = require("shortid");
+const fs = require("fs");
+const express = require("express");
+const app = express();
+const schema = require("./schema");
+const baseUrl = "https://url-service-yogaboll.herokuapp.com/";
+const port = (process.env.PORT || 3000);
 
 //mongoose.connect("mongodb://localhost:27017/urlservice");
 mongoose.connect("mongodb://markus:markus@ds021016.mlab.com:21016/url-shortener");
@@ -15,20 +15,19 @@ mongoose.connect("mongodb://markus:markus@ds021016.mlab.com:21016/url-shortener"
 
 var ShortUrl = mongoose.model("ShortUrl", schema, "shortUrls");
 
-app.get("/", function(req, res) {
-    
-    fs.readFile("./index.html", null, function(err, data) {
+app.get("/", (req, res) => {   
+    fs.readFile("./index.html", (err, data) => {
         if (err) {
             console.log(err);
             process.exit(1);
         }
-        res.writeHead(200, { "Content-Type": "text/html" })
+        res.writeHead(200, { "Content-Type": "text/html" });
         res.write(data);
         res.end();
     });    
 });
 
-app.get("/new/:url(*)", function (req, res) {
+app.get("/new/:url(*)", (req, res) => {
     //console.log("new/url is activated");
     var shortCode = shortid.generate();
     
@@ -37,7 +36,7 @@ app.get("/new/:url(*)", function (req, res) {
         original_url: req.params.url                             
     });
     
-    shortUrl.save(function(err) {
+    shortUrl.save( (err) => {
         if (err) {
             if (err.name == "ValidationError") {
                 res.json({ error: "Wrong url format, make sure you have a valid protocol and real site."})
@@ -54,9 +53,9 @@ app.get("/new/:url(*)", function (req, res) {
     });   
 });
 
-app.get("/:shortUrl", function (req, res) {
+app.get("/:shortUrl", (req, res) => {
     //console.log("shorturl is activated");
-    ShortUrl.findOne({ _id: req.params.shortUrl }, function(err, doc) {
+    ShortUrl.findOne({ _id: req.params.shortUrl }, (err, doc) => {
         if (err) {
             console.log(err);
             process.exit(1);
